@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
+
 import CardOptionsHook from "../hooks/CardOptionsHook";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { BsTrash2, BsTrash2Fill } from "react-icons/bs";
@@ -8,24 +10,31 @@ const Options = styled.div`
   display: flex;
   flex-direction: row;
 `;
-const CardOptions = ({ id }) => {
-  const [icon, setIcon] = useState(false);
-
-  const handleOnClick = () => setIcon(!icon);
-  return (
-    <Options>
-      <CardOptionsHook
-        id={id}
-        IconSelected={AiFillStar}
-        IconNoSelected={AiOutlineStar}
-      />
-      <CardOptionsHook
-        id={id}
-        IconSelected={BsTrash2Fill}
-        IconNoSelected={BsTrash2}
-      />
-    </Options>
-  );
+const CardOptions = ({
+  id,
+  selectFavouriteProject,
+  deselectFavouriteProject,
+  deletedProject,
+}) => (
+  <Options>
+    <CardOptionsHook
+      id={id}
+      IconSelected={AiFillStar}
+      IconNoSelected={AiOutlineStar}
+      handlerSelected={selectFavouriteProject}
+      handlerUnselected={deselectFavouriteProject}
+    />
+    <CardOptionsHook
+      id={id}
+      IconSelected={BsTrash2Fill}
+      IconNoSelected={BsTrash2}
+      handlerSelected={deletedProject}
+    />
+  </Options>
+);
+CardOptions.propTypes = {
+    selectFavouriteProject: PropTypes.func,
+    deselectFavouriteProject: PropTypes.func,
+    deletedProject: PropTypes.func,
 };
-
 export default CardOptions;

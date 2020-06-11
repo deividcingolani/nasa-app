@@ -2,7 +2,7 @@ import React from "react";
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
 
-// Can be a string as well. Need to ensure each key-value pair ends with ;
+//It is of the internet, there is no my code, but in this code implement a spinner
 const override = css`
   display: block;
   margin: 0 auto;

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Pagination = styled.div`
   display: flex;
@@ -14,7 +15,7 @@ const Button = styled.button`
   padding: 0.25em 1em;
 `;
 
-const CurrentPage = styled.h1`
+const CurrentPage = styled.div`
   font-size: 1em;
 `;
 
@@ -24,8 +25,8 @@ const PaginationCustom = ({
   handlerClickNextPagination,
 }) => (
   <Pagination>
-    <Button onClick={handlerClickPrevPagination}>
-      Previous Page {pageCurrent - 1}
+    <Button disabled={pageCurrent === 1} onClick={handlerClickPrevPagination}>
+      Previous Page {pageCurrent > 1 && pageCurrent - 1}
     </Button>
     <CurrentPage> Current Page ({pageCurrent})</CurrentPage>
 
@@ -34,4 +35,9 @@ const PaginationCustom = ({
     </Button>
   </Pagination>
 );
-export default PaginationCustom;
+PaginationCustom.propTypes = {
+  pageCurrent: PropTypes.number,
+  handlerClickNextPagination: PropTypes.func,
+  handlerClickPrevPagination: PropTypes.func,
+};
+export default memo(PaginationCustom);

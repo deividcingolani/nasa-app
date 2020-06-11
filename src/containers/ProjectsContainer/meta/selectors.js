@@ -5,6 +5,8 @@ export const select = (state) => state || initialState;
 
 export const selectProjects = (state) => select(state).projects;
 export const selectError = (state) => select(state).projects.error;
+export const selectProjectsFavourites = (state) => select(state).projects.favourites;
+export const selectProjectsDeleted = (state) => select(state).projects.deleted;
 
 export const makeSelectProjects = createSelector(
   selectProjects,

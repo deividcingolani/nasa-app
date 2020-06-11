@@ -7,6 +7,7 @@ import ProjectsContainer from "./ProjectsContainer";
 import HomeContainer from "./HomeContainer";
 
 import history from "../utils/History";
+import GlobalStyle from "../styles/Global";
 //Todo: ADD SET COOKIES where Loading with Auth0
 
 function App() {
@@ -18,8 +19,6 @@ function App() {
         </header>
         <main>
           <Switch>
-            <Route path="/" component={ProjectsContainer} />
-
             <PrivateRoute
               exact
               path="/projects"
@@ -29,6 +28,7 @@ function App() {
           </Switch>
         </main>
       </Router>
+      <GlobalStyle />
     </div>
   );
 }

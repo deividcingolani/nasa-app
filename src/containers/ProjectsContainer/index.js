@@ -1,16 +1,21 @@
 import { connect } from "react-redux";
 import Projects from "./components/Projects";
-import { makeSelectProjects, selectError } from "./meta/selectors";
+import { makeSelectProjects, selectError, selectProjectsFavourites, selectProjectsDeleted } from "./meta/selectors";
 import {
   getProjects,
   nextPagination,
   prevPagination,
   getDetailProjects,
+  selectFavouriteProject,
+  deletedProject,
+  deselectFavouriteProject,
 } from "./meta/actions";
 
 const mapStateToProps = (state) => ({
   projects: makeSelectProjects(state),
-  error: selectError(state)
+  error: selectError(state),
+  projectsFavourites: selectProjectsFavourites(state),
+  projectsDeleted:selectProjectsDeleted(state)
 });
 
 const mapDispatchToProps = {
@@ -18,6 +23,9 @@ const mapDispatchToProps = {
   nextPagination,
   prevPagination,
   getDetailProjects,
+  selectFavouriteProject,
+  deletedProject,
+  deselectFavouriteProject,
 };
 
 const ProjectContainer = connect(mapStateToProps, mapDispatchToProps)(Projects);

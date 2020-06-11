@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import styled from "styled-components";
 import parse from "html-react-parser";
 import CardOptions from "./CardOptions";
+import PropTypes from "prop-types";
 
 const Project = styled.div`
   display: inline-block;
@@ -37,7 +38,6 @@ const CenteredButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  
 `;
 const Dates = styled.div``;
 const Subheader = styled.div`
@@ -87,6 +87,9 @@ const CardProject = ({
   status,
   description,
   benefits,
+  selectFavouriteProject,
+  deselectFavouriteProject,
+  deletedProject,
 }) => {
   const [height, setHeight] = useState("350px");
   const [showMore, setShowMore] = useState(false);
@@ -99,7 +102,6 @@ const CardProject = ({
   };
   return (
     <Project height={height} key={id}>
-
       <HeaderCard>
         <Title>{title}</Title>
         <Button seconday={status === "Active" ? true : false}> {status}</Button>
@@ -109,7 +111,12 @@ const CardProject = ({
           <StartDate>Start Date: {startDate}</StartDate>
           <LastUpdated>Last Update {lastUpdated}</LastUpdated>
         </Dates>
-        <CardOptions id={id} />
+        <CardOptions
+          id={id}
+          selectFavouriteProject={selectFavouriteProject}
+          deselectFavouriteProject={deselectFavouriteProject}
+          deletedProject={deletedProject}
+        />
       </Subheader>
       <Description>
         <DescriptionLabel>Description</DescriptionLabel>
@@ -139,4 +146,18 @@ const CardProject = ({
     </Project>
   );
 };
-export default CardProject;
+
+CardProject.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  startDate: PropTypes.string,
+  lastUpdated: PropTypes.string,
+  status: PropTypes.string,
+  description: PropTypes.string,
+  benefits: PropTypes.string,
+  selectFavouriteProject: PropTypes.func,
+  deselectFavouriteProject: PropTypes.func,
+  deletedProject: PropTypes.func,
+};
+
+export default memo(CardProject);

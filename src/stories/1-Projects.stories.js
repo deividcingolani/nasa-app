@@ -14,13 +14,24 @@ const handlerClickPrevPagination = () => {
 const handlerClickNextPagination = () => {
   console.log("Next page");
 };
+const handlerClickFavouritesCards = () => {
+  console.log("Favourites Cards");
+};
+
+const handlerClickDeletedCards = () => {
+  console.log("Deleted Cards");
+};
 export const showProject = () => <CardProject {...Project} />;
 
 export const showProjects = () => (
   <ShowProjects
     handlerClickNextPagination={handlerClickNextPagination}
     handlerClickPrevPagination={handlerClickPrevPagination}
+    handlerClickFavouritesCards={handlerClickFavouritesCards}
+    handlerClickDeletedCards={handlerClickDeletedCards}
     projects={Projects}
     pageCurrent={5}
   />
 );
+
+

@@ -16,7 +16,7 @@ export const getProjectsError = (payload) => ({
 
 export const getDetailProjects = (payload) => ({
   type: constants.GET_DETAIL_PROJECTS,
-  payload
+  payload,
 });
 
 export const getDetailProjectsSuccess = (payload) => ({
@@ -40,4 +40,39 @@ export const nextPagination = () => ({
 
 export const prevPagination = () => ({
   type: constants.PREV_PAGINATION,
+});
+
+export const selectFavouriteProject = (projectId) => ({
+  type: constants.SELECTED_FAVOURITE_PROJECT,
+  projectId,
+});
+
+export const deselectFavouriteProject = (projectId) => ({
+  type: constants.DESELECTED_FAVOURITE_PROJECT,
+  projectId,
+});
+
+export const setFavouriteSuccess = (payload) => ({
+  type: constants.SET_FAVOURITE_SUCCESS,
+  payload,
+});
+
+export const setFavouriteError = (payload) => ({
+  type: constants.SET_FAVOURITE_ERROR,
+  payload,
+});
+
+export const deletedProject = (projectId) => ({
+  type: constants.DELETED_PROJECT,
+  projectId,
+});
+
+export const deletedProjectsSuccess = (payload) => ({
+  type: constants.DELETED_PROJECT_SUCCESS,
+  payload,
+});
+
+export const deletedProjectsError = (payload) => ({
+  type: constants.DELETED_PROJECT_ERROR,
+  payload,
 });
