@@ -1,12 +1,13 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useAuth0 } from "../../../react-auth0-spa";
 import config from "../../../auth_config.json";
 import Navbar from "../../../components/NavBar/NavBar";
 
-const Navigation = () => {
+
+const Navigation = ({ navbarState, handleNavBar }) => {
   var options = {
     auth: {
-      redirectUrl: config.envEndpoint ,
+      redirectUrl: config.envEndpoint,
     },
   };
   useEffect(() => {
@@ -14,13 +15,14 @@ const Navigation = () => {
   }, []);
 
   const { isAuthenticated, logout, loginWithRedirect } = useAuth0(options);
-  console.log(isAuthenticated)
   return (
-    <Navbar
-      login={loginWithRedirect}
-      isAuthenticated={isAuthenticated}
-      logout={logout}
-    />
+      <Navbar
+        login={loginWithRedirect}
+        isAuthenticated={isAuthenticated}
+        logout={logout}
+        navbarState={navbarState}
+        handleNavbar={handleNavBar}
+      />
   );
 };
 

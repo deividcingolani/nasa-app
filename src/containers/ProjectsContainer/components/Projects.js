@@ -15,10 +15,13 @@ function ProjectsContainer({
   deselectFavouriteProject,
   deletedProject,
 }) {
+  
   const { pagination, projectsRender } = { ...projects };
   useEffect(() => {
-    getProjects();
-  }, [getProjects]);
+    if (!(pagination && pagination.initialized === true)) {
+      getProjects();
+    }
+  }, [getProjects, pagination]);
 
   useEffect(() => {
     if (pagination && pagination.updating) {

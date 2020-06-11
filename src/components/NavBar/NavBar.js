@@ -8,13 +8,14 @@ import CollapseMenu from "./CollapseMenu";
 import { Link } from "react-router-dom";
 
 const NavBar = styled(animated.nav)`
-  position: sticky;
+  position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   background: #2d3436;
-  z-index: 1;
+  z-index: 10;
   font-size: 1.4rem;
+  
 `;
 
 const FlexContainer = styled.div`
@@ -23,7 +24,6 @@ const FlexContainer = styled.div`
   margin: auto;
   padding: 0 2rem;
   justify-content: space-between;
-  height: 5rem;
 `;
 
 const NavLinks = styled(animated.ul)`
@@ -81,13 +81,15 @@ const Navbar = (props) => {
             <Link to="/">Home</Link>
             {props.isAuthenticated && (
               <>
-                <Link to="/projects">Nasa Projects</Link>
+                <Link to="/projects">Projects</Link>
                 <Link onClick={() => props.logout()}>LOGOUT</Link>
               </>
             )}
 
             {!props.isAuthenticated && (
-              <Link onClick={() => props.login()}>LOGIN</Link>
+              <Link to="/" onClick={() => props.login()}>
+                LOGIN
+              </Link>
             )}
           </NavLinks>
 
@@ -102,6 +104,9 @@ const Navbar = (props) => {
       <CollapseMenu
         navbarState={props.navbarState}
         handleNavbar={props.handleNavbar}
+        isAuthenticated={props.isAuthenticated}
+        login={props.login}
+        logout={props.logout}
       />
     </>
   );

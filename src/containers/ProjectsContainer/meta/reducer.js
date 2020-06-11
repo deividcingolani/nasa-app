@@ -8,6 +8,8 @@ export const initialState = {
     currentPage: 0,
     offset: 0,
     updating: false,
+    initialized: false,
+
   },
   deleted: [],
   favourites: [],
@@ -28,6 +30,7 @@ const Projects = (state = initialState, action) =>
         draft.pagination.lastPage = Math.trunc(
           action.payload.countRows / state.pagination.perPage
         );
+        draft.pagination.initialized = true;
         break;
 
       case constants.GET_DETAIL_PROJECTS_SUCCESS:

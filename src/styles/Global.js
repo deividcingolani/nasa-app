@@ -15,8 +15,8 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    background-color: ;
+    font-family: "Droid Serif";
+  
   }
 `;
 
