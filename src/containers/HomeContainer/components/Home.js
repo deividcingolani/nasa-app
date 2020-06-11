@@ -1,10 +1,7 @@
 import React from "react";
+import HomeRender from "../../../components/Home";
 
 const Home = () => {
-    return (
-        <>
-            <h1>Hola</h1>
-        </>
-    );
+  return <HomeRender />;
 };
 export default Home;

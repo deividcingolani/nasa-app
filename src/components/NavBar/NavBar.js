@@ -8,7 +8,7 @@ import CollapseMenu from "./CollapseMenu";
 import { Link } from "react-router-dom";
 
 const NavBar = styled(animated.nav)`
-  position: fixed;
+  position: sticky;
   width: 100%;
   top: 0;
   left: 0;
@@ -78,23 +78,19 @@ const Navbar = (props) => {
         <FlexContainer>
           <Brand />
           <NavLinks style={linkAnimation}>
-            <Link to="/projects">Nasa Projects</Link>&nbsp;
             <Link to="/">Home</Link>
             {props.isAuthenticated && (
-              <button onClick={() => props.logout()}>Log out</button>
+              <>
+                <Link to="/projects">Nasa Projects</Link>
+                <Link onClick={() => props.logout()}>LOGOUT</Link>
+              </>
             )}
+
             {!props.isAuthenticated && (
-              <button
-                onClick={() =>
-                  props.loginWithRedirect({
-                    appState: { targetUrl: "/projects" },
-                  })
-                }
-              >
-                Log in
-              </button>
+              <Link onClick={() => props.login()}>LOGIN</Link>
             )}
           </NavLinks>
+
           <BurgerWrapper>
             <BurgerMenu
               navbarState={props.navbarState}

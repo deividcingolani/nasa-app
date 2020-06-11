@@ -16,7 +16,6 @@ function* handleGetProjects() {
   try {
     const action = getEndpointURL("PROJECTS");
     const params = {
-      updatedSince: "2020-01-01",
       api_key: API_KEY,
     };
     const response = yield call(network.getData, action, params);

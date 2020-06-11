@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useAuth0 } from "../../../react-auth0-spa";
 import config from "../../../auth_config.json";
 import Navbar from "../../../components/NavBar/NavBar";
@@ -6,14 +6,18 @@ import Navbar from "../../../components/NavBar/NavBar";
 const Navigation = () => {
   var options = {
     auth: {
-      redirectUrl: config.envEndpoint + "projects",
+      redirectUrl: config.envEndpoint ,
     },
   };
-  const { isAuthenticated, logout, loginWithRedirect } = useAuth0(options);
+  useEffect(() => {
+    document.title = "Projects | NASA";
+  }, []);
 
+  const { isAuthenticated, logout, loginWithRedirect } = useAuth0(options);
+  console.log(isAuthenticated)
   return (
     <Navbar
-      loginWithRedirect={loginWithRedirect}
+      login={loginWithRedirect}
       isAuthenticated={isAuthenticated}
       logout={logout}
     />

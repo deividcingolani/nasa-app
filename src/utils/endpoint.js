@@ -1,5 +1,5 @@
 export const URLS = {
-  PROJECTS: { url: "", subUrl: "projects" },
+  PROJECTS: { url: "projects", subUrl: "" },
   DETAIL_PROJECT: { url: "projects", subUrl: "project_id" },
 
 };
