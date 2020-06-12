@@ -5,6 +5,14 @@ import CardProject from "./CardProject";
 import styled from "styled-components";
 import Toolbar from "./Toolbar";
 
+const ProjectsEmpty = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 15rem;
+  font-size: 44px;
+  letter-spacing: 0.5rem;
+`;
+
 const ProjectsCard = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -33,8 +41,8 @@ const ShowProjects = ({
   lastPage,
 }) => {
   if (!projects) return <h1>Is Loading</h1>;
-
-  if (projects) {
+  console.log(projects)
+  if (projects && projects.length !== undefined) {
     const dataProject = projects.map((project) => {
       const projectDetails = project.project;
       return (
@@ -68,6 +76,8 @@ const ShowProjects = ({
       </>
     );
   }
+  if (projects.length === undefined)
+    return <ProjectsEmpty>THERE IS NO PROJECT</ProjectsEmpty>;
 };
 ShowProjects.defaultProps = {
   projects: {},
