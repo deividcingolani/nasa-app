@@ -26,11 +26,11 @@ const ShowProjects = ({
   pageCurrent,
   handlerClickPrevPagination,
   handlerClickNextPagination,
-  handlerClickFavouritesCards,
-  handlerClickDeletedCards,
   selectFavouriteProject,
   deselectFavouriteProject,
   deletedProject,
+  handleExportData,
+  lastPage,
 }) => {
   if (!projects) return <h1>Is Loading</h1>;
 
@@ -54,16 +54,16 @@ const ShowProjects = ({
           pageCurrent={pageCurrent}
           handlerClickNextPagination={handlerClickNextPagination}
           handlerClickPrevPagination={handlerClickPrevPagination}
-          deletedProject={handlerClickDeletedCards}
-          handlerClickFavouritesCards={handlerClickFavouritesCards}
+          handleExportData={handleExportData}
+          lastPage={lastPage}
         />
         <ProjectsCard>{dataProject}</ProjectsCard>
         <Toolbar
           pageCurrent={pageCurrent}
           handlerClickNextPagination={handlerClickNextPagination}
           handlerClickPrevPagination={handlerClickPrevPagination}
-          deletedProject={handlerClickDeletedCards}
-          handlerClickFavouritesCards={handlerClickFavouritesCards}
+          handleExportData={handleExportData}
+          lastPage={lastPage}
         />
       </>
     );

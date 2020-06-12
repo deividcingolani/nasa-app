@@ -23,7 +23,7 @@ function* handleGetProjects() {
     const rowsRenderInit = response.projects.projects.slice(0, 10);
 
     yield put(actions.getProjectsSuccess(response));
-    yield put(actions.initPagination(countRows));
+    yield put(actions.initPagination({ countRows }));
     yield put(actions.getDetailProjects({ row: rowsRenderInit }));
   } catch (error) {
     yield put(actions.getProjectsError({ error }));
@@ -136,10 +136,25 @@ function* handleDetailProjects(action) {
         });
       }
     }
+    let projectsFavourites = yield select(selectProjectsFavourites);
+
+    const dataPaginationWithFavourites = dataPagination.map((dataPage) => {
+      const match = projectsFavourites.filter((project) => {
+        return project === dataPage.project.id;
+      });
+      if (match && match.length > 0) {
+        return {
+          ...dataPage,
+          project: { ...dataPage.project, favourite: true },
+        };
+      }
+      return dataPage;
+    });
+
 
     yield put(
       actions.getDetailProjectsSuccess({
-        dataPagination: dataPagination,
+        dataPagination: dataPaginationWithFavourites,
         newProjectsDetail: newProjectsDetail,
       })
     );
@@ -160,10 +175,27 @@ function* handleSelectedFavourite(action) {
     yield put(actions.setFavouriteSuccess({ favourites: favouritesSelected }));
   } catch (error) {
     console.error(error);
-    // yield put(actions.setFavouriteError({ error }));
+    yield put(actions.setFavouriteError({ error }));
   }
 }
 
+function* handleExportData(action) {
+  try {
+    let favourites = yield select(selectProjectsFavourites);
+    const bodyFavourites = JSON.stringify(favourites);
+    console.log(
+      "This is my json for export Projects Favourites with an endpoint"
+    );
+    console.log(bodyFavourites);
+    // const actionFavourite = getEndpointURL("FAVOURITES_PROJECT");
+    // yield call(network.postData, actionFavourite, bodyFavourites);
+
+    yield put(actions.exportDataSuccess());
+  } catch (error) {
+    console.error(error);
+    yield put(actions.exportDataError({ error }));
+  }
+}
 function* handleUnSelectedFavourite(action) {
   try {
     const projectsFavourites = yield select(selectProjectsFavourites);
@@ -181,10 +213,12 @@ function* handleUnSelectedFavourite(action) {
 function* handleDelete(action) {
   try {
     const projectsDeleted = yield select(selectProjectsDeleted);
-    const deletedProjects = update(projectsDeleted, {
-      $push: [action.projectId],
-    });
-
+    let deletedProjects;
+    if (projectsDeleted) {
+      deletedProjects = update(projectsDeleted, {
+        $push: [action.projectId],
+      });
+    }
     const dataProject = yield select(selectProjects);
     const projects = dataProject.projects.projects;
     const newProjects = projects.filter(
@@ -197,7 +231,7 @@ function* handleDelete(action) {
         totalCount: newProjects.length,
       })
     );
-    yield put(actions.deselectFavouriteProject(action.projectId));
+    yield put(actions.deletedProjectsSuccess(action.projectId));
   } catch (error) {
     console.error(error);
     yield put(actions.deletedProjectsError({ error }));
@@ -216,4 +250,5 @@ export default function* () {
     handleUnSelectedFavourite
   );
   yield takeLatest(constants.DELETED_PROJECT, handleDelete);
+  yield takeLatest(constants.EXPORT_DATA, handleExportData);
 }

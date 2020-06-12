@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import ShowProjects from "../../../components/ShowProjects";
 import { AwesomeComponent } from "../../../utils/AwesomeComponent";
+import { exportData } from "../meta/selectors";
 
 function ProjectsContainer({
   projects,
@@ -14,8 +15,8 @@ function ProjectsContainer({
   selectFavouriteProject,
   deselectFavouriteProject,
   deletedProject,
+  exportData,
 }) {
-  
   const { pagination, projectsRender } = { ...projects };
   useEffect(() => {
     if (!(pagination && pagination.initialized === true)) {
@@ -36,20 +37,21 @@ function ProjectsContainer({
   const handlerClickNextPagination = () => {
     nextPagination();
   };
-
   if (error) return <h1>There is an error!</h1>;
-
   if (!pagination) return <AwesomeComponent />;
+  if (pagination && pagination.updating) return <AwesomeComponent />;
   if (pagination && pagination.data) {
     return (
       <ShowProjects
         pageCurrent={pagination.currentPage + 1}
+        lastPage={pagination.lastPage}
         projects={pagination.data}
         handlerClickPrevPagination={handlerClickPrevPagination}
         handlerClickNextPagination={handlerClickNextPagination}
         selectFavouriteProject={selectFavouriteProject}
         deselectFavouriteProject={deselectFavouriteProject}
         deletedProject={deletedProject}
+        handleExportData={exportData}
       />
     );
   }

@@ -1,6 +1,9 @@
 export const URLS = {
   PROJECTS: { url: "projects", subUrl: "" },
   DETAIL_PROJECT: { url: "projects", subUrl: "project_id" },
+  FAVOURITES_PROJECT: { url: "projects", subUrl: "favourites" },
+  DELETED_PROJECT: { url: "projects", subUrl: "deleted" },
+
 
 };
 

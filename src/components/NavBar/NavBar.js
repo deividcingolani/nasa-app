@@ -60,7 +60,6 @@ const BurgerWrapper = styled.div`
   }
 `;
 const Navbar = (props) => {
-  console.log(props);
   const barAnimation = useSpring({
     from: { transform: "translate3d(0, -10rem, 0)" },
     transform: "translate3d(0, 0, 0)",
@@ -83,7 +82,7 @@ const Navbar = (props) => {
             {props.isAuthenticated && (
               <>
                 <Link to="/projects">Projects</Link>
-                <Link onClick={() => props.logout()}>LOGOUT</Link>
+                <Link to="" onClick={() => props.logout()}>LOGOUT</Link>
               </>
             )}
 

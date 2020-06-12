@@ -75,7 +75,7 @@ const DescriptionLabel = styled.h1`
   margin-top: 1rem;
   margin-bottom: 0.2rem;
 `;
-const DescriptionContent = styled.p`
+const DescriptionContent = styled.div`
   overflow: auto;
   font-size: 14px;
   max-height: 130px;
@@ -108,13 +108,19 @@ const CardProject = ({
   status,
   description,
   benefits,
+    favourite,
   selectFavouriteProject,
   deselectFavouriteProject,
   deletedProject,
 }) => {
+  if(favourite){
+    console.log(favourite)
+  }
   const [height, setHeight] = useState("350px");
   const [showMore, setShowMore] = useState(false);
-
+  const [selectedStars, setSelectedStars] = useState(favourite);
+  const [selectedDeleted, setSelectedDeleted] = useState(false);
+  
   const HandlerClick = () => {
     const newHeight = height === "350px" ? "500px" : "350px";
     const newShowMore = showMore ? false : true;
@@ -135,6 +141,10 @@ const CardProject = ({
           <LastUpdated>Last Update {lastUpdated}</LastUpdated>
         </Dates>
         <CardOptions
+          selectedStars={selectedStars}
+          setSelectedStars={setSelectedStars}
+          selectedDeleted={selectedDeleted}
+          setSelectedDeleted={setSelectedDeleted}
           id={id}
           selectFavouriteProject={selectFavouriteProject}
           deselectFavouriteProject={deselectFavouriteProject}

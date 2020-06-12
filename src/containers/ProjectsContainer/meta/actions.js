@@ -76,3 +76,16 @@ export const deletedProjectsError = (payload) => ({
   type: constants.DELETED_PROJECT_ERROR,
   payload,
 });
+
+export const exportData = () => ({
+  type: constants.EXPORT_DATA,
+});
+export const exportDataSuccess = (payload) => ({
+  type: constants.EXPORT_DATA_SUCCESS,
+  payload,
+});
+
+export const exportDataError = (payload) => ({
+  type: constants.EXPORT_DATA_ERROR,
+  payload,
+});

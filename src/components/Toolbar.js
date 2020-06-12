@@ -39,7 +39,8 @@ const Toolbar = ({
   handlerClickPrevPagination,
   handlerClickNextPagination,
   pageCurrent,
-  handlerClickDeletedCards,
+  handleExportData,
+  lastPage,
 }) => (
   <ContainerToolbar>
     <SpaceDiv></SpaceDiv>
@@ -47,8 +48,9 @@ const Toolbar = ({
       handlerClickPrevPagination={handlerClickPrevPagination}
       handlerClickNextPagination={handlerClickNextPagination}
       pageCurrent={pageCurrent}
+      lastPage={lastPage}
     />
-    <Button onClick={handlerClickDeletedCards}>Export Data</Button>
+    <Button onClick={handleExportData}>Export Data</Button>
   </ContainerToolbar>
 );
 
@@ -56,6 +58,6 @@ Toolbar.propTypes = {
   pageCurrent: PropTypes.number,
   handlerClickNextPagination: PropTypes.func,
   handlerClickFavouritesCards: PropTypes.func,
-  handlerClickDeletedCards: PropTypes.func,
+  handleExportData: PropTypes.func,
 };
 export default memo(Toolbar);

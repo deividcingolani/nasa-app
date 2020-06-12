@@ -9,8 +9,9 @@ export const initialState = {
     offset: 0,
     updating: false,
     initialized: false,
-
+    lastPage: null,
   },
+  exportdata: false,
   deleted: [],
   favourites: [],
 };
@@ -80,6 +81,13 @@ const Projects = (state = initialState, action) =>
         draft.error = action.payload.error;
         break;
 
+      case constants.EXPORT_DATA_SUCCESS:
+        draft.exportdata = true;
+        break;
+
+      case constants.DELETED_PROJECT_ERROR:
+        draft.error = action.payload.error;
+        break;
       default:
         break;
     }

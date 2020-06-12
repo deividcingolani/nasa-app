@@ -15,6 +15,10 @@ const CardOptions = ({
   selectFavouriteProject,
   deselectFavouriteProject,
   deletedProject,
+  selectedStars,
+  setSelectedStars,
+  selectedDeleted,
+  setSelectedDeleted,
 }) => (
   <Options>
     <CardOptionsHook
@@ -23,14 +27,16 @@ const CardOptions = ({
       IconNoSelected={AiOutlineStar}
       handlerSelected={selectFavouriteProject}
       handlerUnselected={deselectFavouriteProject}
-      defaultColor={"#f1ab06"}
+      selected={selectedStars}
+      setSelected={setSelectedStars}
     />
     <CardOptionsHook
       id={id}
       IconSelected={BsTrash2Fill}
       IconNoSelected={BsTrash2}
       handlerSelected={deletedProject}
-      defaultColor={false}
+      selected={selectedDeleted}
+      setSelected={setSelectedDeleted}
     />
   </Options>
 );

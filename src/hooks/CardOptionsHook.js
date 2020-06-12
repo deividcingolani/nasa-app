@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const CardOption = styled.div`
   flex-grow: 2;
 `;
-
+//Todo IMPROVE STYLED OF COMPONENT
 const CardOptionsHook = ({
   id,
   IconSelected,
@@ -13,19 +13,18 @@ const CardOptionsHook = ({
   handlerSelected,
   handlerUnselected,
   defaultColor,
+  selected,
+  setSelected,
 }) => {
-  const IconSelectedStyled = styled(IconSelected)`
-    color: ${(props) =>
-      props.iconColor === defaultColor ? defaultColor : ""};
+  const IconSelectedStyled = styled.div`
+    color: #f1ab06;
     font-size: 30px;
   `;
 
-  const IconNoSelectedStyled = styled(IconNoSelected)`
-  font-size: 30px;
+  const IconNoSelectedStyled = styled.div`
+    font-size: 30px;
   `;
 
-
-  const [selected, setSelected] = useState(false);
   const handleOnClick = () => {
     const newStatuSelected = !selected;
     setSelected(newStatuSelected);
@@ -38,13 +37,17 @@ const CardOptionsHook = ({
       handlerSelected(id);
     }
   };
-  console.log(defaultColor);
+
   return (
     <CardOption onClick={handleOnClick}>
       {selected ? (
-        <IconSelectedStyled iconColor={defaultColor ? defaultColor : ""} />
+        <IconSelectedStyled>
+          <IconSelected />
+        </IconSelectedStyled>
       ) : (
-        <IconNoSelectedStyled />
+        <IconNoSelectedStyled>
+          <IconNoSelected />
+        </IconNoSelectedStyled>
       )}
     </CardOption>
   );
