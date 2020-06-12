@@ -22,7 +22,7 @@ const handlerClickDeletedCards = () => {
   console.log("Deleted Cards");
 };
 export const showCardProject = () => <CardProject {...Project} />;
-export const showCardWithoutData = () => <CardProject/>;
+export const saCardWithoutData = () => <CardProject/>;
 
 export const showProjects = () => (
   <ShowProjects
@@ -44,6 +44,7 @@ export const showProjectsWithoutProjects = () => (
     pageCurrent={0}
   />
 );
+
 let oneProjects = [];
 oneProjects.push(Projects[0]);
 

@@ -39,7 +39,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "dev-server": "json-server -p 8080 db.json"
+    "dev-server": "json-server -p 8080 db.json",
+    "coverage": "react-scripts test --env=jsdom --watchAll=false --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"
