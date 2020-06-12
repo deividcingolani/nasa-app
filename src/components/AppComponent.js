@@ -6,7 +6,7 @@ import styled from "styled-components";
 import * as PropTypes from "prop-types";
 import PrivateRoute from "./common/PrivateRoute";
 
-const ContainerRender = styled.div`
+export const ContainerRender = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -21,7 +21,7 @@ const MainContainer = styled.div`
 `;
 
 const AppComponent = ({ expandMobile, handleNavBar, component }) => (
-  <ContainerRender>
+  <ContainerRender className="ContainerRender">
     <HeaderContainer expandMobile={expandMobile}>
       <Navigation handleNavBar={handleNavBar} navbarState={expandMobile} />
     </HeaderContainer>
@@ -34,6 +34,7 @@ const AppComponent = ({ expandMobile, handleNavBar, component }) => (
   </ContainerRender>
 );
 
+ContainerRender.displayName = "ContainerRender";
 AppComponent.propTypes = {
   expandMobile: PropTypes.bool,
   handleNavBar: PropTypes.func,
