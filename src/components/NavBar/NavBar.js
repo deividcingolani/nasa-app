@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useSpring, animated, config } from "react-spring";
-
+import Header from "../../assets/Header.jpeg";
 import Brand from "./Brand";
 import BurgerMenu from "./BurgerMenu";
 import CollapseMenu from "./CollapseMenu";
@@ -12,10 +12,10 @@ const NavBar = styled(animated.nav)`
   width: 100%;
   top: 0;
   left: 0;
-  background: #2d3436;
+  background-image: url(${Header});
+
   z-index: 10;
   font-size: 1.4rem;
-  
 `;
 
 const FlexContainer = styled.div`
@@ -42,8 +42,8 @@ const NavLinks = styled(animated.ul)`
     cursor: pointer;
 
     &:hover {
-      color: #fdcb6e;
-      border-bottom: 1px solid #fdcb6e;
+      color: white;
+      border-bottom: 1px solid white;
     }
 
     @media (max-width: 768px) {
@@ -60,6 +60,7 @@ const BurgerWrapper = styled.div`
   }
 `;
 const Navbar = (props) => {
+  console.log(props);
   const barAnimation = useSpring({
     from: { transform: "translate3d(0, -10rem, 0)" },
     transform: "translate3d(0, 0, 0)",

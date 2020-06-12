@@ -10,30 +10,37 @@ const Project = styled.div`
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1.5rem;
-  background-color: #fff;
   height: ${(props) => props.height};
   width: 35rem;
   overflow: hidden;
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
   opacity: 0.75;
+  font-family: "Lato", sans-serif;
 `;
 
 const Title = styled.h1`
-  font-size: 22px;
-  font-family: "Droid Serif";
+  font-size: 18px;
 `;
+
 const Button = styled.button`
-  /* Adapt the colors based on primary prop */
-  background: ${(props) => (props.primary ? "palevioletred" : "white")};
-  color: ${(props) => (props.primary ? "white" : "palevioletred")};
-  font-size: 0.8em;
   margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid;
-  border-radius: 3px;
+  width: 200px;
+  font-size: 16px;
+  border: 2px solid black;
+  cursor: pointer;
+
+  background-color: ${(props) => (props.primary ? "white" : "#2d3436")};
+  color: ${(props) => (props.primary ? "#2d3436" : "white")};
+`;
+
+const ButtonSecondary = styled(Button)`
+  background-color: ${(props) => (props.active ? "#2d3436" : "#20207b")};
+  color: white;
   width: 100px;
   height: 30px;
+  cursor: auto;
 `;
+
 const CenteredButton = styled.div`
   display: flex;
   justify-content: center;
@@ -45,11 +52,15 @@ const Subheader = styled.div`
   justify-content: space-between;
 `;
 
-const StartDate = styled.h1`
+const StartDate = styled.p`
   font-size: 14px;
+  font-style: oblique;
+  margin: 0;
 `;
-const LastUpdated = styled.h1`
+const LastUpdated = styled.p`
   font-size: 14px;
+  font-style: oblique;
+  margin: 0;
 `;
 
 const HeaderCard = styled.div`
@@ -60,25 +71,35 @@ const HeaderCard = styled.div`
 /*Description*/
 const Description = styled.div``;
 const DescriptionLabel = styled.h1`
-  font-size: 22px;
+  font-size: 16px;
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
 `;
 const DescriptionContent = styled.p`
   overflow: auto;
   font-size: 14px;
-  max-height: 100px;
+  max-height: 130px;
+  letter-spacing: 1px;
+  margin-top: 0;
 `;
 
 /*Benefits*/
-const Benefits = styled.div``;
+const Benefits = styled.div`
+`;
+
+const BenefitsLabel = styled.h1`
+  font-size: 16px;
+  margin-top: 2rem;
+  margin-bottom: 0.2rem;
+
+`;
 const BenefitsContent = styled.p`
   overflow: auto;
   font-size: 14px;
-  max-height: 100px;
+  max-height: 130px;
+  letter-spacing: 1px;
+  margin-top: 0;
 `;
-const BenefitsLabel = styled.h1`
-  font-size: 22px;
-`;
-
 const CardProject = ({
   id,
   title,
@@ -104,7 +125,9 @@ const CardProject = ({
     <Project height={height} key={id}>
       <HeaderCard>
         <Title>{title}</Title>
-        <Button seconday={status === "Active" ? true : false}> {status}</Button>
+        <ButtonSecondary active={status === "Active" ? true : false}>
+          {status}
+        </ButtonSecondary>
       </HeaderCard>
       <Subheader>
         <Dates>
@@ -130,9 +153,7 @@ const CardProject = ({
             <BenefitsContent>{parse(`${benefits}`)}</BenefitsContent>
           </Benefits>
           <CenteredButton>
-            <Button primary onClick={HandlerClick}>
-              Show Less
-            </Button>
+            <Button onClick={HandlerClick}>Show Less</Button>
           </CenteredButton>
         </>
       )}

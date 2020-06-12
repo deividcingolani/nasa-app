@@ -23,18 +23,20 @@ const CardOptions = ({
       IconNoSelected={AiOutlineStar}
       handlerSelected={selectFavouriteProject}
       handlerUnselected={deselectFavouriteProject}
+      defaultColor={"#f1ab06"}
     />
     <CardOptionsHook
       id={id}
       IconSelected={BsTrash2Fill}
       IconNoSelected={BsTrash2}
       handlerSelected={deletedProject}
+      defaultColor={false}
     />
   </Options>
 );
 CardOptions.propTypes = {
-    selectFavouriteProject: PropTypes.func,
-    deselectFavouriteProject: PropTypes.func,
-    deletedProject: PropTypes.func,
+  selectFavouriteProject: PropTypes.func,
+  deselectFavouriteProject: PropTypes.func,
+  deletedProject: PropTypes.func,
 };
 export default CardOptions;

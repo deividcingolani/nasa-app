@@ -3,48 +3,63 @@ import styled from "styled-components";
 
 const HomeContainer = styled.div`
   display: flex;
+  background-color: #000411f5;
   flex-direction: column;
   align-items: center;
-
-  background-color: black !important;
-  opacity: 0.1;
+  font-family: "Lato", sans-serif;
   min-height: 800px;
+  color: white;
 `;
 
 const ContainerNasa = styled.div`
-  padding-top: 1rem;
-  color: white;
-  z-index: 300;
+  padding-top: 3rem;
 `;
 
 const HeaderNasa = styled.div`
   font-size: 44px;
-  background-color: yellow;
-  color: black !important;
-  opacity: 1 !important;
+  text-align: center;
 `;
 
-const DescriptionNasa = styled.p`
-  padding-top: 1rem;
-  font-size: 16px;
+const DescriptionNasa = styled.h1`
+  font-size: 14px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.5rem;
+`;
+
+const DescriptionTechport = styled.h1`
+  margin-top: 2rem;
+  font-size: 14px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.5rem;
 `;
 
 const ContainerTechport = styled.div`
-  @media (max-width: 768px) {
-    display: none;
-  }
+  padding-top: 3rem;
 `;
 const Philoshophy = styled.h1`
   padding-top: 2rem;
-  font-size: 18px;
+  font-size: 16px;
+  text-justify: auto;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5rem;
 `;
-const HeaderTechport = styled.div``;
-const DescriptionTechport = styled.h1``;
+const HeaderTechport = styled.div`
+  font-size: 36px;
+  text-align: center;
+  margin-top: 3rem;
+`;
 
-const HomeRender = ({ navbarState }) => (
+const HomeRender = () => (
   <HomeContainer>
     <ContainerNasa>
-      <HeaderNasa>Welcome to Nasa</HeaderNasa>
+      <HeaderNasa>Welcome to NASA</HeaderNasa>
       <Philoshophy>
         NASA inspires the world by exploring new frontiers, discovering new
         knowledge, and developing new technology.
@@ -57,17 +72,17 @@ const HomeRender = ({ navbarState }) => (
     </ContainerNasa>
     <ContainerTechport>
       <HeaderTechport>
-        This is an application build with Techport APIa
+        This is an application build with Techport APIS
       </HeaderTechport>
       <DescriptionTechport>
-        Techport Welcome to TechPort - NASA's resource for collecting and
-        sharing information about NASA-funded technology development. Techport
-        allows the public to discover the technologies NASA is working on every
-        day to explore space, understand the universe, and improve aeronautics.
-        NASA is developing technologies in areas such as propulsion,
-        nanotechnology, robotics, and human health. NASA is committed to making
-        its data available and machine-readable through an Application
-        Programming Interface (API) to better serve its user communities.
+        NASA's resource for collecting and sharing information about NASA-funded
+        technology development. Techport allows the public to discover the
+        technologies NASA is working on every day to explore space, understand
+        the universe, and improve aeronautics. NASA is developing technologies
+        in areas such as propulsion, nanotechnology, robotics, and human health.
+        NASA is committed to making its data available and machine-readable
+        through an Application Programming Interface (API) to better serve its
+        user communities.
       </DescriptionTechport>
     </ContainerTechport>
   </HomeContainer>

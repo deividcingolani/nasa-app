@@ -8,6 +8,15 @@ import Toolbar from "./Toolbar";
 const ProjectsCard = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  margin-top: 0.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 2rem;
+    grid-gap: 20px;
+    justify-items: center;
+    align-items: center;
+  }
   grid-gap: 50px;
   grid-auto-rows: minmax(100px, auto);
 `;
@@ -49,6 +58,13 @@ const ShowProjects = ({
           handlerClickFavouritesCards={handlerClickFavouritesCards}
         />
         <ProjectsCard>{dataProject}</ProjectsCard>
+        <Toolbar
+          pageCurrent={pageCurrent}
+          handlerClickNextPagination={handlerClickNextPagination}
+          handlerClickPrevPagination={handlerClickPrevPagination}
+          deletedProject={handlerClickDeletedCards}
+          handlerClickFavouritesCards={handlerClickFavouritesCards}
+        />
       </>
     );
   }

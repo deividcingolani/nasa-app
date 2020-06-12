@@ -5,7 +5,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 //It is of the internet, there is no my code, but in this code implement a spinner
 const override = css`
   display: block;
-  margin: 0 auto;
+  margin: 10rem auto;
   border-color: red;
 `;
 

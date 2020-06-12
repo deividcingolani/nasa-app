@@ -6,13 +6,41 @@ const Pagination = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row;
+  justify-content: center;
 `;
 
 const Button = styled.button`
-  /* Adapt the colors based on primary prop */
-  font-size: 1em;
+  display: flex;
+  flex-display: column;
+  align-items: center;
+  flex-direction: column;
+
   margin: 1em;
-  padding: 0.25em 1em;
+  width: 100px;
+  font-size: 16px;
+  border: 2px solid black;
+  cursor: pointer;
+`;
+const ButtonPrevious = styled(Button)`
+  border-color: red;
+  background-color: white;
+  color: red;
+
+  &:hover {
+    background-color: red;
+    color: white;
+  }
+`;
+
+const ButtonNext = styled(Button)`
+  border-color: #20207b;
+  background-color: white;
+  color: #20207b;
+
+  &:hover {
+    background-color: #20207b;
+    color: white;
+  }
 `;
 
 const CurrentPage = styled.div`
@@ -25,15 +53,17 @@ const PaginationCustom = ({
   handlerClickNextPagination,
 }) => (
   <Pagination>
-    <Button disabled={pageCurrent === 1} onClick={handlerClickPrevPagination}>
-      Previous Page {pageCurrent > 1 && pageCurrent - 1}
-    </Button>
-    <CurrentPage> Current Page ({pageCurrent})</CurrentPage>
+    <ButtonPrevious
+      disabled={pageCurrent === 1}
+      onClick={handlerClickPrevPagination}
+    >
+      {"<"} Previous
+    </ButtonPrevious>
+    <CurrentPage> Page {pageCurrent} </CurrentPage>
 
-    <Button onClick={handlerClickNextPagination}>
-      Next Page {pageCurrent + 1}
-    </Button>
+    <ButtonNext onClick={handlerClickNextPagination}>Next ></ButtonNext>
   </Pagination>
+
 );
 PaginationCustom.propTypes = {
   pageCurrent: PropTypes.number,

@@ -5,11 +5,13 @@ import { useSpring, animated } from "react-spring";
 import { Link } from "react-router-dom";
 
 const CollapseWrapper = styled(animated.div)`
-  background: #2d3436;
+  background: #000411f5;
   position: fixed;
   top: 4.5rem;
   left: 0;
   right: 0;
+    font-family: "Lato", sans-serif;
+
 `;
 
 const NavLinks = styled.ul`
@@ -29,8 +31,8 @@ const NavLinks = styled.ul`
     cursor: pointer;
 
     &:hover {
-      color: #fdcb6e;
-      border-bottom: 1px solid #fdcb6e;
+      color: white;
+      border-bottom: 1px solid white;
     }
   }
 `;
