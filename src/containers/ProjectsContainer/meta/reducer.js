@@ -85,7 +85,7 @@ const Projects = (state = initialState, action) =>
         draft.exportdata = true;
         break;
 
-      case constants.DELETED_PROJECT_ERROR:
+      case constants.EXPORT_DATA_ERROR:
         draft.error = action.payload.error;
         break;
       default:

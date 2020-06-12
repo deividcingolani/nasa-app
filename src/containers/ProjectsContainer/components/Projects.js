@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 import ShowProjects from "../../../components/ShowProjects";
 import { AwesomeComponent } from "../../../utils/AwesomeComponent";
-import { exportData } from "../meta/selectors";
 
 function ProjectsContainer({
   projects,

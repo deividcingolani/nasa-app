@@ -15,6 +15,7 @@
     "html-react-parser": "^0.13.0",
     "immer": "^6.0.9",
     "immutability-helper": "^3.1.1",
+    "js-cookie": "^2.2.1",
     "json-server": "^0.16.1",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
@@ -58,8 +59,10 @@
   "devDependencies": {
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
+    "@storybook/addon-storyshots": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/preset-create-react-app": "^3.0.0",
-    "@storybook/react": "^5.3.19"
+    "@storybook/react": "^5.3.19",
+    "react-test-renderer": "^16.13.1"
   }
 }
