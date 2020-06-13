@@ -41,7 +41,6 @@ const ShowProjects = ({
   lastPage,
 }) => {
   if (!projects) return <h1>Is Loading</h1>;
-  console.log(projects)
   if (projects && projects.length !== undefined) {
     const dataProject = projects.map((project) => {
       const projectDetails = project.project;

@@ -23,8 +23,9 @@ function* handleGetProjects() {
     const rowsRenderInit = response.projects.projects.slice(0, 10);
 
     yield put(actions.getProjectsSuccess(response));
-    yield put(actions.initPagination({ countRows }));
     yield put(actions.getDetailProjects({ row: rowsRenderInit }));
+    yield put(actions.initPagination({ countRows }));
+
   } catch (error) {
     yield put(actions.getProjectsError({ error }));
   }
@@ -150,7 +151,6 @@ function* handleDetailProjects(action) {
       }
       return dataPage;
     });
-
 
     yield put(
       actions.getDetailProjectsSuccess({

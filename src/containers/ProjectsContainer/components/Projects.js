@@ -18,7 +18,7 @@ function ProjectsContainer({
 }) {
   const { pagination, projectsRender } = { ...projects };
   useEffect(() => {
-    if (!(pagination && pagination.initialized === true)) {
+    if (!pagination) {
       getProjects();
     }
   }, [getProjects, pagination]);
